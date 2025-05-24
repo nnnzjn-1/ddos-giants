@@ -4,28 +4,56 @@
 تم تطوير الأداة بالكامل بواسطة [خالد](https://github.com/nnnzjn-1)، وتتميز بالذكاء، وسهولة التحكم، ودعم الهجمات الحديثة.
 
 ---
-## Features | المميزات
+## Table of Contents | محتويات
 
-- Multiple attack modes: GET, POST, bypass, proxy_get, proxy_post  
-- أوضاع هجوم متعددة: GET، POST، تجاوز الحماية، هجوم بـ proxy GET و proxy POST  
-- Support for SOCKS5 and HTTP proxies  
-- دعم لبروكسيات SOCKS5 و HTTP  
-- Customizable POST data input  
-- إمكانية إضافة بيانات POST مخصصة  
-- High concurrency and performance using asyncio and aiohttp  
-- أداء عالي باستخدام asyncio و aiohttp  
-- Easy to use CLI interface  
-- واجهة سطر أوامر سهلة الاستخدام
+- [About | عن المشروع](#about--عن-المشروع)  
+- [Features | المميزات](#features--المميزات)  
+- [Installation | التثبيت](#installation--التثبيت)  
+- [Usage | طريقة الاستخدام](#usage--طريقة-الاستخدام)  
+- [Attack Modes | أوضاع الهجوم](#attack-modes--أوضاع-الهجوم)  
+- [Examples | أمثلة](#examples--أمثلة)  
+- [Configuration | الإعدادات](#configuration--الإعدادات)  
+- [Code Structure & Development | هيكلة الكود والتطوير](#code-structure--development--هيكلة-الكود-والتطوير)  
+- [Testing | الاختبارات](#testing--الاختبارات)    
+- [Disclaimer | إخلاء المسؤولية](#disclaimer--إخلاء-المسؤولية)  
+- [Author | المؤلف](#author--المؤلف) 
 
 ---
-## Requirements | المتطلبات
 
-- Python 3.8+  
-- مكتبات Python: `aiohttp`, `async-timeout`  
-يمكن تثبيتها عبر:
+## Features | المميزات
+
+- Multiple attack modes (GET, POST, bypass, proxy-based)  
+- دعم أوضاع هجوم متعددة (GET، POST، تجاوز الحماية، باستخدام البروكسي)  
+- Proxy support (HTTP and SOCKS5)  
+- دعم البروكسيات HTTP و SOCKS5  
+- Custom POST data support  
+- إمكانية إرسال بيانات POST مخصصة  
+- High concurrency with efficient async HTTP requests  
+- تعدد الخيوط بكفاءة باستخدام الشبكات غير المتزامنة  
+- User-friendly CLI interface  
+- واجهة سطر أوامر سهلة الاستخدام  
+- Modular code design for easy maintenance  
+- تصميم برمجي مرن وسهل الصيانة  
+- Basic unit tests to ensure stability  
+- اختبارات وحدة أساسية لضمان الاستقرار  
+
+
+
+--- 
+
+## Installation | التثبيت
+
+Requirements:
+
+- Python 3.8 or newer  
+- مكتبة `aiohttp` و `async-timeout`
+
+Install dependencies:
 
 ```bash
-pip install aiohttp async-timeout
+pip install -r requirements.txt
+
+---
 
 ## 🛠️ Installation | التثبيت
 
@@ -76,9 +104,57 @@ python3 core/runner.py proxy_get https://example.com 60 100 proxy/http.txt
 python3 core/runner.py proxy_post https://example.com 60 100 proxy/http.txt "param1=value1&param2=value2"
 ```
 
+----
+Configuration | الإعدادات
+	•	Proxy files: One proxy per line in format ip:port
+	•	ملفات البروكسي: بروكسي واحد في كل سطر بالشكل ip:port
+	•	POST data: Must be URL-encoded, e.g., key=value&key2=value2
+	•	بيانات POST: مشفرة بصيغة URL مثل key=value&key2=value2
+----
+Code Structure & Development | هيكلة الكود والتطوير
+
+ddos-giants/
+│
+├── core/                # Attack core logic files
+│   ├── runner.py        # Main entry point
+│   ├── attacks.py       # Attack methods implementation
+│   └── utils.py         # Utility functions (e.g., proxy loader)
+│
+├── proxy/               # Proxy lists directory
+│   ├── socks5.txt
+│   └── http.txt
+│
+├── tests/               # Unit tests directory
+│   └── test_runner.py
+│
+├── README.md            # This documentation file
+├── requirements.txt     # Dependencies list
+└── .gitignore
 ---
 
-## 🌍 Web Interface  | واجهة الويب 
+-Development notes | ملاحظات تطويرية
+	•	Use type hints to improve readability and allow static checking (mypy).
+	•	استخدم نوع البيانات (type hints) لتحسين وضوح الكود.
+	•	Add detailed docstrings to all functions and classes.
+	•	أضف تعليقات docstrings لكل دالة وكلاس.
+	•	Implement logging module instead of print for better debugging control.
+	•	استبدل print بـ logging لتسهيل تتبع الأخطاء.
+	•	Consider splitting configuration values (e.g., headers, user agents) into separate config files.
+	•	افصل إعدادات مثل الهيدرز وقوائم المستخدمين في ملفات مستقلة.
+
+---
+
+-Testing | الاختبارات
+
+Basic unit tests are included in the tests/ folder to verify:
+	•	URL validation
+	•	Proxy loading functionality
+	•	Attack mode execution without crashing
+
+-Running tests | تشغيل الاختبارات
+-python3 -m unittest discover tests
+---
+ ## 🌍 Web Interface  | واجهة الويب 
 
 ```bash
 uvicorn web.app:app --host 0.0.0.0 --port 8000 --reload
