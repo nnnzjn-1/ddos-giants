@@ -1,11 +1,11 @@
 import unittest
 import os
+from unittest.mock import patch, AsyncMock
 from core import utils, runner
 
 class TestUtils(unittest.TestCase):
 
     def test_load_proxies(self):
-        # إعداد ملف بروكسي مؤقت للاختبار
         proxy_file = "tests/test_proxies.txt"
         with open(proxy_file, "w") as f:
             f.write("127.0.0.1:8080\n")
@@ -16,17 +16,21 @@ class TestUtils(unittest.TestCase):
         self.assertIn("127.0.0.1:8080", proxies)
         self.assertIn("192.168.1.1:1080", proxies)
 
-        os.remove(proxy_file)  # حذف الملف بعد الاختبار
+        os.remove(proxy_file)
 
     def test_load_proxies_empty(self):
         proxy_file = "tests/empty_proxies.txt"
         with open(proxy_file, "w") as f:
-            pass  # ملف فارغ
+            pass
 
         proxies = utils.load_proxies(proxy_file)
         self.assertEqual(proxies, [])
 
         os.remove(proxy_file)
+
+    def test_load_proxies_file_not_found(self):
+        with self.assertRaises(FileNotFoundError):
+            utils.load_proxies("non_existent_file.txt")
 
 class TestRunner(unittest.TestCase):
 
@@ -39,15 +43,44 @@ class TestRunner(unittest.TestCase):
         self.assertFalse(runner.is_valid_url(url))
 
     def test_attack_modes_exist(self):
-        # تأكد أن كل الأوضاع موجودة في runner.py
         modes = ["GET", "POST", "bypass", "proxy_get", "proxy_post"]
         for mode in modes:
             self.assertTrue(hasattr(runner, f"attack_{mode.lower()}"), f"Missing attack_{mode.lower()} function")
 
     def test_runner_entry_point(self):
-        # مجرد اختبار استدعاء دالة main بدون تنفيذ الهجوم
-        # تأكد أن الدالة main موجودة وقابلة للاستدعاء
         self.assertTrue(callable(runner.main))
+
+    @patch('core.runner.attack_get', new_callable=AsyncMock)
+    def test_attack_get_called(self, mock_attack_get):
+        # Test that attack_get is called with correct params
+        url = "https://example.com"
+        duration = 10
+        threads = 5
+        proxies = []
+
+        # Call the coroutine attack_get
+        import asyncio
+        asyncio.run(runner.attack_get(url, duration, threads, proxies))
+
+        mock_attack_get.assert_called_with(url, duration, threads, proxies)
+
+    @patch('core.runner.attack_post', new_callable=AsyncMock)
+    def test_attack_post_called(self, mock_attack_post):
+        url = "https://example.com"
+        duration = 10
+        threads = 5
+        proxies = []
+        post_data = "param=value"
+
+        import asyncio
+        asyncio.run(runner.attack_post(url, duration, threads, proxies, post_data))
+
+        mock_attack_post.assert_called_with(url, duration, threads, proxies, post_data)
+
+    def test_post_data_loading(self):
+        post_data = "param1=value1&param2=value2"
+        self.assertIsInstance(post_data, str)
+        self.assertIn("param1=value1", post_data)
 
 if __name__ == '__main__':
     unittest.main()
