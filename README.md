@@ -118,20 +118,20 @@ Code Structure & Development | هيكلة الكود والتطوير
 
 ddos-giants/
 │
-├── core/                # Attack core logic files
-│   ├── runner.py        # Main entry point
-│   ├── attacks.py       # Attack methods implementation
-│   └── utils.py         # Utility functions (e.g., proxy loader)
+├── core/             # Attack core logic files
+│   ├── runner.py     # Main entry point
+│   ├── attacks.py    # Attack methods implementation
+│   └── utils.py      # Utility functions (e.g., proxy loader)
 │
-├── proxy/               # Proxy lists directory
+├── proxy/            # Proxy lists directory
 │   ├── socks5.txt
 │   └── http.txt
 │
-├── tests/               # Unit tests directory
+├── tests/            # Unit tests directory
 │   └── test_runner.py
 │
-├── README.md            # This documentation file
-├── requirements.txt     # Dependencies list
+├── README.md         # This documentation file
+├── requirements.txt  # Dependencies list
 └── .gitignore
 
 ---
@@ -146,18 +146,17 @@ ddos-giants/
 	•	Consider splitting configuration values (e.g., headers, user agents) into separate config files.
 	•	افصل إعدادات مثل الهيدرز وقوائم المستخدمين في ملفات مستقلة.
 
----
-
--Testing | الاختبارات
----
-
+--- 
+Testing | الاختبارات
+-
 Basic unit tests are included in the tests/ folder to verify:
-•	URL validation
-•	Proxy loading functionality
-•	Attack mode execution without crashing
+
+ •	URL validation
+ •	Proxy loading functionality
+ •	Attack mode execution without crashing
 
 Running tests | تشغيل الاختبارات
-python3 -m unittest discover tests
+ •python3 -m unittest discover tests
 
 ---
  ## 🌍 Web Interface  | واجهة الويب 
