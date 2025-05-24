@@ -106,13 +106,15 @@ python3 core/runner.py proxy_post https://example.com 60 100 proxy/http.txt "par
 
 ----
 Configuration | الإعدادات
-
+---
 	•	Proxy files: One proxy per line in format ip:port
 	•	ملفات البروكسي: بروكسي واحد في كل سطر بالشكل ip:port
 	•	POST data: Must be URL-encoded, e.g., key=value&key2=value2
 	•	بيانات POST: مشفرة بصيغة URL مثل key=value&key2=value2
 ----
+
 Code Structure & Development | هيكلة الكود والتطوير
+---
 
 ddos-giants/
 │
@@ -133,8 +135,8 @@ ddos-giants/
 └── .gitignore
 
 ---
-
 -Development notes | ملاحظات تطويرية
+---
 	•	Use type hints to improve readability and allow static checking (mypy).
 	•	استخدم نوع البيانات (type hints) لتحسين وضوح الكود.
 	•	Add detailed docstrings to all functions and classes.
@@ -147,14 +149,16 @@ ddos-giants/
 ---
 
 -Testing | الاختبارات
+---
 
 Basic unit tests are included in the tests/ folder to verify:
 	•	URL validation
 	•	Proxy loading functionality
 	•	Attack mode execution without crashing
 
--Running tests | تشغيل الاختبارات
--python3 -m unittest discover tests
+Running tests | تشغيل الاختبارات
+python3 -m unittest discover tests
+
 ---
  ## 🌍 Web Interface  | واجهة الويب 
 
@@ -174,6 +178,7 @@ Remotely control and monitor attacks via Telegram.
 ---
 
 Notes | ملاحظات:
+-
 	•	For proxy modes (bypass, proxy_get, proxy_post), you must provide a proxy file containing proxies list.
 	•	في أوضاع البروكسي، يجب توفير ملف يحتوي على قائمة البروكسيات.
 	•	POST data should be URL encoded (e.g. param1=value1&param2=value2).
