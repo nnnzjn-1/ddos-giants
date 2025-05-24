@@ -152,9 +152,9 @@ ddos-giants/
 ---
 
 Basic unit tests are included in the tests/ folder to verify:
-	•	URL validation
-	•	Proxy loading functionality
-	•	Attack mode execution without crashing
+•	URL validation
+•	Proxy loading functionality
+•	Attack mode execution without crashing
 
 Running tests | تشغيل الاختبارات
 python3 -m unittest discover tests
