@@ -105,7 +105,7 @@ python3 core/runner.py proxy_post https://example.com 60 100 proxy/http.txt "par
 ```
 
 ----
-Configuration | الإعدادات
+## Configuration | الإعدادات
 ---
 	•	Proxy files: One proxy per line in format ip:port
 	•	ملفات البروكسي: بروكسي واحد في كل سطر بالشكل ip:port
@@ -113,29 +113,29 @@ Configuration | الإعدادات
 	•	بيانات POST: مشفرة بصيغة URL مثل key=value&key2=value2
 ----
 
-Code Structure & Development | هيكلة الكود والتطوير
+## Code Structure & Development | هيكلة الكود والتطوير
 ---
 
 ddos-giants/
 │
-├── core/             # Attack core logic files
-│   ├── runner.py     # Main entry point
-│   ├── attacks.py    # Attack methods implementation
-│   └── utils.py      # Utility functions (e.g., proxy loader)
+├── core/                # Attack core logic files
+│   ├── runner.py        # Main entry point
+│   ├── attacks.py       # Attack methods implementation
+│   └── utils.py         # Utility functions (e.g., proxy loader)
 │
-├── proxy/            # Proxy lists directory
+├── proxy/               # Proxy lists directory
 │   ├── socks5.txt
 │   └── http.txt
 │
-├── tests/            # Unit tests directory
+├── tests/                # Unit tests directory
 │   └── test_runner.py
 │
-├── README.md         # This documentation file
-├── requirements.txt  # Dependencies list
+├── README.md              # This documentation file
+├── requirements.txt       # Dependencies list
 └── .gitignore
 
 ---
--Development notes | ملاحظات تطويرية
+## Development notes | ملاحظات تطويرية
 ---
 	•	Use type hints to improve readability and allow static checking (mypy).
 	•	استخدم نوع البيانات (type hints) لتحسين وضوح الكود.
@@ -147,7 +147,7 @@ ddos-giants/
 	•	افصل إعدادات مثل الهيدرز وقوائم المستخدمين في ملفات مستقلة.
 
 --- 
-Testing | الاختبارات
+## Testing | الاختبارات
 -
 Basic unit tests are included in the tests/ folder to verify:
 
