@@ -115,8 +115,7 @@ python3 core/runner.py proxy_post https://example.com 60 100 proxy/http.txt "par
 
 ## Code Structure & Development | هيكلة الكود والتطوير
 ---
-
-ddos-giants/
+```ddos-giants/
 │
 ├── core/                # Attack core logic files
 │   ├── runner.py        # Main entry point
@@ -133,7 +132,7 @@ ddos-giants/
 ├── README.md              # This documentation file
 ├── requirements.txt       # Dependencies list
 └── .gitignore
-
+```
 ---
 ## Development notes | ملاحظات تطويرية
 ---
