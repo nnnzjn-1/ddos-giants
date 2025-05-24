@@ -1,0 +1,7 @@
+flask
+requests
+python-socks
+telebot
+fastapi
+uvicorn
+httpx
