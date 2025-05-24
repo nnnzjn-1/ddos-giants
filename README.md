@@ -106,6 +106,7 @@ python3 core/runner.py proxy_post https://example.com 60 100 proxy/http.txt "par
 
 ----
 Configuration | الإعدادات
+
 	•	Proxy files: One proxy per line in format ip:port
 	•	ملفات البروكسي: بروكسي واحد في كل سطر بالشكل ip:port
 	•	POST data: Must be URL-encoded, e.g., key=value&key2=value2
@@ -130,6 +131,7 @@ ddos-giants/
 ├── README.md            # This documentation file
 ├── requirements.txt     # Dependencies list
 └── .gitignore
+
 ---
 
 -Development notes | ملاحظات تطويرية
