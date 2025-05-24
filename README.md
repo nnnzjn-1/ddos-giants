@@ -4,27 +4,28 @@
 تم تطوير الأداة بالكامل بواسطة [خالد](https://github.com/nnnzjn-1)، وتتميز بالذكاء، وسهولة التحكم، ودعم الهجمات الحديثة.
 
 ---
+## Features | المميزات
 
-## 🧠 Features | الميزات
-
-- 🔥 50+ attack methods (Layer 4 / Layer 7) | أكثر من 50 طريقة هجوم
-- 🛡️ Cloudflare/OVH bypass | تجاوز حمايات ذكية
-- 🌐 Web Dashboard | لوحة تحكم ويب
-- 🤖 Telegram Bot (soon) | بوت تيليجرام للتحكم (قريبًا)
-- 🔌 Proxy System: HTTP/SOCKS | نظام بروكسيات متكامل
-- 💾 SQLite DB for logs and stats | قاعدة بيانات لحفظ الإحصائيات
-- 🧩 Modular Plugin System | دعم الإضافات المخصصة
-
----
-
-## ⚙️ Requirements | المتطلبات
-
-- Python 3.8+
-- pip
-- Git
-- Linux / Termux / Pydroid / VPS
+- Multiple attack modes: GET, POST, bypass, proxy_get, proxy_post  
+- أوضاع هجوم متعددة: GET، POST، تجاوز الحماية، هجوم بـ proxy GET و proxy POST  
+- Support for SOCKS5 and HTTP proxies  
+- دعم لبروكسيات SOCKS5 و HTTP  
+- Customizable POST data input  
+- إمكانية إضافة بيانات POST مخصصة  
+- High concurrency and performance using asyncio and aiohttp  
+- أداء عالي باستخدام asyncio و aiohttp  
+- Easy to use CLI interface  
+- واجهة سطر أوامر سهلة الاستخدام
 
 ---
+## Requirements | المتطلبات
+
+- Python 3.8+  
+- مكتبات Python: `aiohttp`, `async-timeout`  
+يمكن تثبيتها عبر:
+
+```bash
+pip install aiohttp async-timeout
 
 ## 🛠️ Installation | التثبيت
 
@@ -93,6 +94,13 @@ Remotely control and monitor attacks via Telegram.
 تحكم عن بعد واستلم الإشعارات عبر تيليجرام.
 
 ---
+
+Notes | ملاحظات:
+	•	For proxy modes (bypass, proxy_get, proxy_post), you must provide a proxy file containing proxies list.
+	•	في أوضاع البروكسي، يجب توفير ملف يحتوي على قائمة البروكسيات.
+	•	POST data should be URL encoded (e.g. param1=value1&param2=value2).
+	•	بيانات POST يجب أن تكون مشفرة بصيغة URL.
+
 
 ## ⚠️ Legal Warning | ⚠️ تحذير قانوني
 
